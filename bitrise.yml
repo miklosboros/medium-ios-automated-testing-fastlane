@@ -6,9 +6,9 @@ trigger_map:
   - push_branch: "*"
     pipeline: pipeline_all
   - pull_request_source_branch: "*"
-    workflow: pipeline_main
+    pipeline: pipeline_all
   - tag: "*"
-    workflow: pipeline_main
+    pipeline: pipeline_all
 pipelines:
   pipeline_all:
     stages:
