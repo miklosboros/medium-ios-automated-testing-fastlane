@@ -192,20 +192,24 @@ workflows:
                 echo "$BITRISE_ARTIFACT_PATHS"
                 
                 echo "-- unzip -- "
-                
                 exec unzip "${BITRISE_ARTIFACT_PATHS}"
       - script@1.1:
           title: Test without Building
           inputs:
-            - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
-            log\nset -x \n\nls -la\n\nmv ./Users/vagrant/git/* .\n\nls -la\n\nrm Notes.xctestplan\n\ncp
-            TestShard_1.xctestplan Notes.xctestplan\n\nchmod 644 Notes.xctestplan\n\necho
-            \"-- test-without-building --\"\n\nxcodebuild \\\n-workspace \"Notes.xcworkspace\"
-            \\\n-scheme \"Notes\" \\\n-sdk iphonesimulator \\\n-resultBundlePath \"xcodebuild.xcresult\"
-            \\\n-derivedDataPath \"/Users/vagrant/git/DerivedData\" \\\n-testPlan
-            \"Notes\" \\\n-parallel-testing-enabled YES \\\n-maximum-parallel-testing-workers
-            $SIMS \\\n-destination \"platform=iOS Simulator,name=iPhone 8,OS=latest\"
-            \\\ntest-without-building\n"
+            - content: |
+                #!/usr/bin/env bash
+                set -ex 
+                
+                ls -la
+                mv ./Users/vagrant/git/* .
+                ls -la
+                
+                rm Notes.xctestplan
+                cp TestShard_1.xctestplan Notes.xctestplan
+                chmod 644 Notes.xctestplan
+                
+                echo "-- test-without-building --"
+                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
       - script@1.1:
           title: Compress Result Bundle
           is_always_run: true
@@ -215,10 +219,7 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                
-                exec zip -qr \
-                    "${BITRISE_DEPLOY_DIR}/TestResults2.zip" \
-                    "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults2.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: {}
     before_run: []
   tests_3:
@@ -237,20 +238,24 @@ workflows:
                 echo "$BITRISE_ARTIFACT_PATHS"
                 
                 echo "-- unzip -- "
-                
                 exec unzip "${BITRISE_ARTIFACT_PATHS}"
       - script@1.1:
           title: Test without Building
           inputs:
-            - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
-            log\nset -x \n\nmv ./Users/vagrant/git/* .\n\nrm Notes.xctestplan\n\ncp
-            TestShard_2.xctestplan Notes.xctestplan\n\nchmod 644 Notes.xctestplan\n\necho
-            \"-- test-without-building --\"\n\nxcodebuild \\\n-workspace \"Notes.xcworkspace\"
-            \\\n-scheme \"Notes\" \\\n-sdk iphonesimulator \\\n-resultBundlePath \"xcodebuild.xcresult\"
-            \\\n-derivedDataPath \"/Users/vagrant/git/DerivedData\" \\\n-testPlan
-            \"Notes\" \\\n-parallel-testing-enabled YES \\\n-maximum-parallel-testing-workers
-            $SIMS \\\n-destination \"platform=iOS Simulator,name=iPhone 8,OS=latest\"
-            \\\ntest-without-building\n"
+            - content: |
+                #!/usr/bin/env bash
+                set -ex 
+                
+                ls -la
+                mv ./Users/vagrant/git/* .
+                ls -la
+                
+                rm Notes.xctestplan
+                cp TestShard_2.xctestplan Notes.xctestplan
+                chmod 644 Notes.xctestplan
+                
+                echo "-- test-without-building --"
+                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
       - script@1.1:
           title: Compress Result Bundle
           is_always_run: true
@@ -260,10 +265,7 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                
-                exec zip -qr \
-                    "${BITRISE_DEPLOY_DIR}/TestResults3.zip" \
-                    "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults3.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: {}
     before_run: []
   tests_4:
@@ -282,20 +284,24 @@ workflows:
                 echo "$BITRISE_ARTIFACT_PATHS"
                 
                 echo "-- unzip -- "
-                
                 exec unzip "${BITRISE_ARTIFACT_PATHS}"
       - script@1.1:
           title: Test without Building
           inputs:
-            - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
-            log\nset -x \n\nmv ./Users/vagrant/git/* .\n\nrm Notes.xctestplan\n\ncp
-            TestShard_3.xctestplan Notes.xctestplan\n\nchmod 644 Notes.xctestplan\n\necho
-            \"-- test-without-building --\"\n\nxcodebuild \\\n-workspace \"Notes.xcworkspace\"
-            \\\n-scheme \"Notes\" \\\n-sdk iphonesimulator \\\n-resultBundlePath \"xcodebuild.xcresult\"
-            \\\n-derivedDataPath \"/Users/vagrant/git/DerivedData\" \\\n-testPlan
-            \"Notes\" \\\n-parallel-testing-enabled YES \\\n-maximum-parallel-testing-workers
-            $SIMS \\\n-destination \"platform=iOS Simulator,name=iPhone 8,OS=latest\"
-            \\\ntest-without-building\n"
+            - content: |
+                #!/usr/bin/env bash
+                set -ex 
+                
+                ls -la
+                mv ./Users/vagrant/git/* .
+                ls -la
+                
+                rm Notes.xctestplan
+                cp TestShard_3.xctestplan Notes.xctestplan
+                chmod 644 Notes.xctestplan
+                
+                echo "-- test-without-building --"
+                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
       - script@1.1:
           title: Compress Result Bundle
           is_always_run: true
@@ -305,10 +311,7 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                
-                exec zip -qr \
-                    "${BITRISE_DEPLOY_DIR}/TestResults4.zip" \
-                    "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults4.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: {}
     before_run: []
   tests_5:
@@ -327,20 +330,24 @@ workflows:
                 echo "$BITRISE_ARTIFACT_PATHS"
                 
                 echo "-- unzip -- "
-                
                 exec unzip "${BITRISE_ARTIFACT_PATHS}"
       - script@1.1:
           title: Test without Building
           inputs:
-            - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
-            log\nset -x \n\nmv ./Users/vagrant/git/* .\n\nrm Notes.xctestplan\n\ncp
-            TestShard_4.xctestplan Notes.xctestplan\n\nchmod 644 Notes.xctestplan\n\necho
-            \"-- test-without-building --\"\n\nxcodebuild \\\n-workspace \"Notes.xcworkspace\"
-            \\\n-scheme \"Notes\" \\\n-sdk iphonesimulator \\\n-resultBundlePath \"xcodebuild.xcresult\"
-            \\\n-derivedDataPath \"/Users/vagrant/git/DerivedData\" \\\n-testPlan
-            \"Notes\" \\\n-parallel-testing-enabled YES \\\n-maximum-parallel-testing-workers
-            $SIMS \\\n-destination \"platform=iOS Simulator,name=iPhone 8,OS=latest\"
-            \\\ntest-without-building\n"
+            - content: |
+                #!/usr/bin/env bash
+                set -ex 
+                
+                ls -la
+                mv ./Users/vagrant/git/* .
+                ls -la
+                
+                rm Notes.xctestplan
+                cp TestShard_4.xctestplan Notes.xctestplan
+                chmod 644 Notes.xctestplan
+                
+                echo "-- test-without-building --"
+                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
       - script@1.1:
           title: Compress Result Bundle
           is_always_run: true
@@ -350,10 +357,7 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                
-                exec zip -qr \
-                    "${BITRISE_DEPLOY_DIR}/TestResults5.zip" \
-                    "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults5.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: {}
     before_run: []
 app:
