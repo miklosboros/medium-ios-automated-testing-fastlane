@@ -40,16 +40,41 @@ workflows:
       - script@1.1:
           title: Deploy Artifacts
           inputs:
-            - content: "#!/usr/bin/env bash\nset -euxo pipefail\n\necho \"==== MOVE FILES
-            TO DEPLOY DIR ====\"\n\necho \"$BITRISE_ARTIFACT_PATHS\"\n\ncd /tmp\nMYDIR=`pwd`/tmp/Users/vagrant/git/xcodebuild.xcresult\n\ni=1\n\nIFS='|'
-            read -ra FILES <<< \"$BITRISE_ARTIFACT_PATHS\"\n\nfor f in ${FILES[@]}\ndo\n
-            \ if [ \"${f: -4}\" = \".zip\" ]; then\n    echo \"Processing $f\"\n\n
-            \   rm -f -r tmp\n    mkdir tmp\n    unzip \"$f\" -d tmp\n\n    echo \"--Trainer--\"\n\n
-            \   mkdir \"${BITRISE_TEST_RESULT_DIR}/test_${i}\"\n\n    trainer \\\n
-            \   --path \"${MYDIR}\" \\\n    --output_directory \"${BITRISE_TEST_RESULT_DIR}/test_${i}\"
-            \\\n    || :\n\n    echo \\\n      \"{ \\\"test-name\\\": \\\"Tests ${i}\\\"
-            }\" > \\\n      \"${BITRISE_TEST_RESULT_DIR}/test_${i}/test-info.json\"\n\n
-            \   ((i++))\n    \n  fi\ndone"
+            - content: |
+                #!/usr/bin/env bash
+                set -euxo pipefail
+                
+                echo "==== MOVE FILES TO DEPLOY DIR ===="
+
+                echo "$BITRISE_ARTIFACT_PATHS"
+                
+                cd /tmp
+                MYDIR=`pwd`/tmp/Users/vagrant/git/xcodebuild.xcresult
+                
+                i=1
+                IFS='|'
+            
+                read -ra FILES <<< "$BITRISE_ARTIFACT_PATHS"
+                
+                for f in ${FILES[@]}
+                do
+                  if [ "${f: -4}" = ".zip" ]; then
+                    echo "Processing $f"
+            
+                    rm -rf tmp
+                    mkdir tmp
+                    
+                    unzip "$f" -d tmp
+                    
+                    echo "--Trainer--"
+                    
+                    mkdir "${BITRISE_TEST_RESULT_DIR}/test_${i}"
+                
+                    trainer --path "${MYDIR}" --output_directory "${BITRISE_TEST_RESULT_DIR}/test_${i}" || : echo "{ \"test-name\": \"Tests ${i}\" }" > "${BITRISE_TEST_RESULT_DIR}/test_${i}/test-info.json"
+            
+                    ((i++))
+                  fi
+                done
       - deploy-to-bitrise-io@2: {}
   pipeline_main:
     steps:
