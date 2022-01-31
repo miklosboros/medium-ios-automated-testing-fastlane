@@ -4,7 +4,7 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 trigger_map:
   - push_branch: "*"
-    workflow: pipeline_main
+    pipeline: pipeline_all
   - pull_request_source_branch: "*"
     workflow: pipeline_main
   - tag: "*"
