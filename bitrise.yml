@@ -263,7 +263,7 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults${SHARD}".zip" "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults${SHARD}.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: { }
   test_iPhone_8:
     envs:
