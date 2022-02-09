@@ -188,190 +188,41 @@ workflows:
             - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
     before_run: [ ]
   tests_1:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-
-                echo "$BITRISE_ARTIFACT_PATHS"
-
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: | 
-                #!/usr/bin/env bash
-                set -ex 
-
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-
-                rm Notes.xctestplan
-                cp TestShard_0.xctestplan Notes.xctestplan
-                chmod 644 Notes.xctestplan
-
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-                echo "-- compress --"
-
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults1.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: {}
-    before_run: []
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '1'
+    after_run:
+      - tests
   tests_2:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-                
-                echo "$BITRISE_ARTIFACT_PATHS"
-                
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |
-                #!/usr/bin/env bash
-                set -ex 
-                
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-                
-                rm Notes.xctestplan
-                cp TestShard_1.xctestplan Notes.xctestplan
-                chmod 644 Notes.xctestplan
-                
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-                echo "-- compress --"
-                
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults2.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: {}
-    before_run: []
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '2'
+      after_run:
+        - tests
   tests_3:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-                
-                echo "$BITRISE_ARTIFACT_PATHS"
-                
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |
-                #!/usr/bin/env bash
-                set -ex 
-                
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-                
-                rm Notes.xctestplan
-                cp TestShard_2.xctestplan Notes.xctestplan
-                chmod 644 Notes.xctestplan
-                
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-                echo "-- compress --"
-                
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults3.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: {}
-    before_run: []
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '3'
+      after_run:
+        - tests
   tests_4:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-                
-                echo "$BITRISE_ARTIFACT_PATHS"
-                
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |
-                #!/usr/bin/env bash
-                set -ex 
-                
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-                
-                rm Notes.xctestplan
-                cp TestShard_3.xctestplan Notes.xctestplan
-                chmod 644 Notes.xctestplan
-                
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -testPlan "Notes" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-                echo "-- compress --"
-                
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults4.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: {}
-    before_run: []
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '4'
+      after_run:
+        - tests
   tests_5:
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '5'
+      after_run:
+        - tests
+  _tests:
     steps:
       - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
           title: Pull artifacts
@@ -400,7 +251,7 @@ workflows:
                 ls -la
                 
                 rm Notes.xctestplan
-                cp TestShard_4.xctestplan Notes.xctestplan
+                cp TestShard_$((SHARD-1)).xctestplan Notes.xctestplan
                 chmod 644 Notes.xctestplan
                 
                 echo "-- test-without-building --"
@@ -414,182 +265,59 @@ workflows:
                 echo "-- compress --"
                 
                 cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults5.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: {}
-    before_run: []
-  test_iPhone_11:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-
-                echo "$BITRISE_ARTIFACT_PATHS"
-
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                set -ex 
-                
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-                
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 11,OS=latest" -retry-tests-on-failure test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-
-                echo "-- compress --"
-                cd "${BITRISE_DEPLOY_DIR}/"
-
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults3.zip" "/Users/vagrant/git/xcodebuild.xcresult"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults${SHARD}".zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: { }
-    before_run: [ ]
-  test_iPhone_12:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-
-                echo "$BITRISE_ARTIFACT_PATHS"
-
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                set -ex 
-
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 12,OS=latest" -retry-tests-on-failure test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-
-                echo "-- compress --"
-                cd "${BITRISE_DEPLOY_DIR}/"
-
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults4.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: { }
-    before_run: [ ]
-  test_iPhone_13:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-
-                echo "$BITRISE_ARTIFACT_PATHS"
-
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                set -ex 
-
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" -retry-tests-on-failure test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-
-                echo "-- compress --"
-                cd "${BITRISE_DEPLOY_DIR}/"
-
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults5.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: { }
-    before_run: [ ]
   test_iPhone_8:
-    steps:
-      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
-          title: Pull artifacts
-          inputs:
-            - verbose: true
-            - artifact_sources: stage_1.*
-      - script@1.1:
-          title: Unzip
-          inputs:
-            - content: |
-                set -euxo pipefail
-
-                echo "$BITRISE_ARTIFACT_PATHS"
-
-                echo "-- unzip -- "
-                exec unzip "${BITRISE_ARTIFACT_PATHS}"
-      - script@1.1:
-          title: Test without Building
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                set -ex 
-
-                ls -la
-                mv ./Users/vagrant/git/* .
-                ls -la
-
-                echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8,OS=latest" -retry-tests-on-failure test-without-building
-      - script@1.1:
-          title: Compress Result Bundle
-          is_always_run: true
-          inputs:
-            - content: |-
-                set -euxo pipefail
-
-                echo "-- compress --"
-                cd "${BITRISE_DEPLOY_DIR}/"
-
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults1.zip" "/Users/vagrant/git/xcodebuild.xcresult"
-      - deploy-to-bitrise-io@2: { }
-    before_run: [ ]
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '1'
+      - opts:
+          is_expand: false
+        SIMULATOR: 'iPhone 8'
+    after_run:
+      - _multiple_destination_tests
   test_iPhone_8_plus:
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '2'
+      - opts:
+          is_expand: false
+        SIMULATOR: 'iPhone 8 Plus'
+    after_run:
+      - _multiple_destination_tests
+  test_iPhone_11:
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '2'
+      - opts:
+          is_expand: false
+        SIMULATOR: 'iPhone 11'
+    after_run:
+      - _multiple_destination_tests
+  test_iPhone_12:
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '2'
+      - opts:
+          is_expand: false
+        SIMULATOR: 'iPhone 11'
+    after_run:
+      - _multiple_destination_tests
+  test_iPhone_13:
+    envs:
+      - opts:
+          is_expand: false
+        SHARD: '5'
+      - opts:
+          is_expand: false
+        SIMULATOR: 'iPhone 13'
+    after_run:
+      - _multiple_destination_tests
+  _multiple_destination_tests:
     steps:
       - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
           title: Pull artifacts
@@ -601,9 +329,9 @@ workflows:
           inputs:
             - content: |
                 set -euxo pipefail
-
+                
                 echo "$BITRISE_ARTIFACT_PATHS"
-
+                
                 echo "-- unzip -- "
                 exec unzip "${BITRISE_ARTIFACT_PATHS}"
       - script@1.1:
@@ -612,26 +340,25 @@ workflows:
             - content: |-
                 #!/usr/bin/env bash
                 set -ex 
-
+                
                 ls -la
                 mv ./Users/vagrant/git/* .
                 ls -la
                 
                 echo "-- test-without-building --"
-                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=iPhone 8 Plus,OS=latest" -retry-tests-on-failure test-without-building
+                xcodebuild -workspace "Notes.xcworkspace" -scheme "Notes" -sdk iphonesimulator -resultBundlePath "xcodebuild.xcresult" -derivedDataPath "/Users/vagrant/git/DerivedData" -parallel-testing-enabled YES -maximum-parallel-testing-workers $SIMS -destination "platform=iOS Simulator,name=${SIMULATOR},OS=latest" -retry-tests-on-failure test-without-building
       - script@1.1:
           title: Compress Result Bundle
           is_always_run: true
           inputs:
             - content: |-
                 set -euxo pipefail
-
+                
                 echo "-- compress --"
                 cd "${BITRISE_DEPLOY_DIR}/"
-
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults2.zip" "/Users/vagrant/git/xcodebuild.xcresult"
+                
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/TestResults${SHARD}.zip" "/Users/vagrant/git/xcodebuild.xcresult"
       - deploy-to-bitrise-io@2: { }
-    before_run: [ ]
 app:
   envs:
     - opts:
