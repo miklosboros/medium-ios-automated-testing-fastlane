@@ -147,7 +147,6 @@ workflows:
       - deploy-to-bitrise-io@2:
           inputs:
             - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
-    before_run: []
   pipeline_multiple_destinations:
     steps:
       - activate-ssh-key@4:
@@ -186,42 +185,41 @@ workflows:
       - deploy-to-bitrise-io@2:
           inputs:
             - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
-    before_run: [ ]
   tests_1:
     envs:
       - opts:
           is_expand: false
         SHARD: '1'
     after_run:
-      - tests
+      - _tests
   tests_2:
     envs:
       - opts:
           is_expand: false
         SHARD: '2'
-      after_run:
-        - tests
+    after_run:
+      - _tests
   tests_3:
     envs:
       - opts:
           is_expand: false
         SHARD: '3'
-      after_run:
-        - tests
+    after_run:
+      - _tests
   tests_4:
     envs:
       - opts:
           is_expand: false
         SHARD: '4'
-      after_run:
-        - tests
+    after_run:
+      - _tests
   tests_5:
     envs:
       - opts:
           is_expand: false
         SHARD: '5'
-      after_run:
-        - tests
+    after_run:
+      - _tests
   _tests:
     steps:
       - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
