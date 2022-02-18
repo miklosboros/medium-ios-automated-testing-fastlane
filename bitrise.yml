@@ -71,6 +71,8 @@ workflows:
         inputs:
         - content: |
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
+            echo "${BITRISE_SOURCE_DIR}/DerivedData"
+
             xcodebuild build-for-testing -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" | xcbeautify
     - script@1.1:
         title: Compress Derived Data
@@ -81,7 +83,8 @@ workflows:
             echo "-- compress --"
 
             exec zip -0 -qr \
-                "${BITRISE_SOURCE_DIR}/DerivedData.zip" 
+                "${BITRISE_SOURCE_DIR}/DerivedData.zip" \
+                $BITRISE_SOURCE_DIR/DerivedData"
     - deploy-to-bitrise-io@2:
         inputs:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
@@ -100,6 +103,8 @@ workflows:
 
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
+            echo "${BITRISE_SOURCE_DIR}/DerivedData"
+
             exec unzip "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
@@ -144,6 +149,8 @@ workflows:
 
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
+            echo "${BITRISE_SOURCE_DIR}/DerivedData"
+
             exec unzip "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
