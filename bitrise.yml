@@ -89,6 +89,9 @@ workflows:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
   shams_unit:
     steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
     - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
         title: Pull artifacts
         inputs:
@@ -113,6 +116,9 @@ workflows:
     - deploy-to-bitrise-io@2: {}
   shams_intergration:
     steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
     - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
         title: Pull artifacts
         inputs:
@@ -135,6 +141,9 @@ workflows:
     - deploy-to-bitrise-io@2: {}
   shams_uitests:
     steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
     - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
         title: Pull artifacts
         inputs:
