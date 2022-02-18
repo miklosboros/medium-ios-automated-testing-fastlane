@@ -4,11 +4,11 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 trigger_map:
 - push_branch: "*"
-  pipeline: pipeline_multiple_shards
+  pipeline: pipeline_shams
 - pull_request_source_branch: "*"
-  pipeline: pipeline_multiple_shards
+  pipeline: pipeline_shams
 - tag: "*"
-  pipeline: pipeline_multiple_shards
+  pipeline: pipeline_shams
 pipelines:
   pipeline_multiple_shards:
     stages:
