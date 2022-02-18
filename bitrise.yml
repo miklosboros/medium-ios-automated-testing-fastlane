@@ -108,6 +108,9 @@ workflows:
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
             exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            
+            pwd
+            ls ${BITRISE_SOURCE_DIR}/DerivedData
     - script@1.1:
         title: Test project
         inputs:
