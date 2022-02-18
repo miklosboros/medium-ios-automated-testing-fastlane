@@ -65,6 +65,7 @@ workflows:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@6: {}
+    - cache-pull: {}
     - cocoapods-install@2: {}
     - script@1.1:
         title: Build project
@@ -87,6 +88,7 @@ workflows:
     - deploy-to-bitrise-io@2:
         inputs:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
+    - cache-push: {}
   shams_unit:
     steps:
     - activate-ssh-key@4:
@@ -107,7 +109,7 @@ workflows:
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            exec unzip "${BITRISE_ARTIFACT_PATHS}/DerivedData"
             
             pwd
             ls ${BITRISE_SOURCE_DIR}/DerivedData
