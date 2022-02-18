@@ -62,7 +62,7 @@ stages:
     - shams_uitests: {}
     - deploy: {}
 workflows:
-- shams_build: 
+  shams_build: 
     - script@1.1:
         title: Build project
         inputs:
