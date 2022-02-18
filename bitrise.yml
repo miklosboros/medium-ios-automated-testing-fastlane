@@ -54,7 +54,6 @@ stages:
   stage_shams_build:
     workflows:
     - shams_build: {}
-    - deploy: {}
   stage_shams_tests:
     workflows:
     - shams_unit: {}
@@ -64,6 +63,10 @@ stages:
 workflows:
   shams_build: 
     steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cocoapods-install@2: {}
     - script@1.1:
         title: Build project
         inputs:
