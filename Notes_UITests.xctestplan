@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "70B883F8-B538-4F85-8058-BFE4F3F0D5EB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Notes.xcodeproj",
+        "identifier" : "0ECB5BC82036EE9400655E0F",
+        "name" : "NotesUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

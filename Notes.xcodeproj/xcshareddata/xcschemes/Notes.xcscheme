@@ -41,6 +41,15 @@
             reference = "container:Notes.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Notes_UnitTests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Notes_IntergrationTests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Notes_UITests.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference
@@ -60,6 +69,16 @@
                BlueprintIdentifier = "0ECB5BC82036EE9400655E0F"
                BuildableName = "NotesUITests.xctest"
                BlueprintName = "NotesUITests"
+               ReferencedContainer = "container:Notes.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "107C27F827C0097800FAD282"
+               BuildableName = "NotesIntergrationTests.xctest"
+               BlueprintName = "NotesIntergrationTests"
                ReferencedContainer = "container:Notes.xcodeproj">
             </BuildableReference>
          </TestableReference>

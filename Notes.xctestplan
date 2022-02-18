@@ -56,6 +56,13 @@
         "identifier" : "0ECB5BC82036EE9400655E0F",
         "name" : "NotesUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Notes.xcodeproj",
+        "identifier" : "107C27F827C0097800FAD282",
+        "name" : "NotesIntergrationTests"
+      }
     }
   ],
   "version" : 1

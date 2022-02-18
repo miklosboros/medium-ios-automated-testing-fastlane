@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "502A3513-A7F9-4526-9774-96EDB839B4BB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Notes.xcodeproj",
+        "identifier" : "107C27F827C0097800FAD282",
+        "name" : "NotesIntergrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
