@@ -82,9 +82,7 @@ workflows:
             set -euxo pipefail
             echo "-- compress --"
 
-            exec zip -0 -qr \
-                "${BITRISE_SOURCE_DIR}/DerivedData.zip" \
-                $BITRISE_SOURCE_DIR/DerivedData"
+            exec zip -0 -qr "${BITRISE_SOURCE_DIR}/DerivedData.zip" $BITRISE_SOURCE_DIR/DerivedData"
     - deploy-to-bitrise-io@2:
         inputs:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
