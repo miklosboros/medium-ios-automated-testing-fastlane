@@ -4,21 +4,21 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 trigger_map:
 - push_branch: "*"
-  pipeline: pipeline_shams
+  pipeline: pipeline_main
 - pull_request_source_branch: "*"
-  pipeline: pipeline_shams
+  pipeline: pipeline_main
 - tag: "*"
-  pipeline: pipeline_shams
+  pipeline: pipeline_main
 pipelines:
   pipeline_main:
     stages:
-    - stage_parallel_build: {}
-    - stage_parallel_tests: {}
+    - stage_ios_build: {}
+    - stage_ios_parallel_tests: {}
 stages:
-  stage_build:
+  stage_ios_build:
     workflows:
     - ios_build: {}
-  stage_tests:
+  stage_ios_parallel_tests:
     workflows:
     - run_unit: {}
     - run_intergration: {}
