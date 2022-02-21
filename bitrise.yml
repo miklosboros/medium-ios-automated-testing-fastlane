@@ -186,7 +186,10 @@ workflows:
 
                 for file in $files
                 do
-                    unzip -q $file -d "${BITRISE_SOURCE_DIR}"
+                    if [ "${file: -4}" = ".zip" ]; then
+                      unzip -q $file -d "${BITRISE_SOURCE_DIR}"
+                    fi
+                    
                 done
 
                 pwd
