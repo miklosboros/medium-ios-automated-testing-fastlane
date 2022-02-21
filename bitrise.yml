@@ -113,11 +113,9 @@ workflows:
             unzip -q "${BITRISE_ARTIFACT_PATHS}" 
 
             pwd
-            echo "Current LS"
-            ls
-
+            
             echo "Current LS in DerivedData folder"
-            ls /DerivedData
+            ls DerivedData
     - script@1.1:
         title: Test project
         inputs:
