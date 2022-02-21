@@ -14,17 +14,17 @@ pipelines:
     stages:
     - stage_ios_build: {}
     - stage_ios_parallel_tests: {}
-    - stage_retrieve_results: {}
+    - stage_retrieve_all_results: {}
 stages:
   stage_ios_build:
     workflows:
     - ios_build: {}
   stage_ios_parallel_tests:
     workflows:
-    - run_unit: {}
-    - run_intergration: {}
-    - run_uitests: {}
-  stage_retrieve_results:
+    - run_unitTests: {}
+    - run_intergrationTests: {}
+    - run_uiTests: {}
+  stage_retrieve_all_results:
     workflows:
       - deploy: {}
 workflows:
@@ -57,7 +57,7 @@ workflows:
         inputs:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.tar"
     - cache-push: {}
-  run_unit:
+  run_unitTests:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
@@ -94,7 +94,7 @@ workflows:
                 cd "${BITRISE_DEPLOY_DIR}/"
                 exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_unit.zip" "/Users/vagrant/git/xcodebuild_unit.xcresult"
     - deploy-to-bitrise-io@2: {}
-  run_intergration:
+  run_intergrationTests:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
@@ -131,7 +131,7 @@ workflows:
                 cd "${BITRISE_DEPLOY_DIR}/"
                 exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_intergation.zip" "/Users/vagrant/git/xcodebuild_intergation.xcresult"
     - deploy-to-bitrise-io@2: {}
-  run_uitests:
+  run_uiTests:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
@@ -182,11 +182,15 @@ workflows:
                 #!/usr/bin/env bash
                 set -euxo pipefail
 
-                read -ra FILES <<< "$BITRISE_ARTIFACT_PATHS"
-                for f in ${FILES[@]}
+                IFS='|' read -ra FILES <<< "$BITRISE_ARTIFACT_PATHS"
                 do
-                    unzip -q "$f"
+                    if [ "${f: -4}" = ".zip" ]; then
+                      unzip -q "$f"
+                    fi
                 done
+
+                pwd
+                ls
 
                 trainer --path xcodebuild_ui.xcresult
                 trainer --path xcodebuild_intergation.xcresult

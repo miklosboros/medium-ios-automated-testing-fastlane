@@ -43,7 +43,7 @@
 		521207EE2750F517F6AED25AACE96871 /* Pods-NotesUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NotesUITests.modulemap"; sourceTree = "<group>"; };
 		649A20290BCC16FD223800251DAB3D29 /* Pods-NotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6757BC58CBF08C883889D830ADD3DA1D /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
-		6AB627FFEBEE9E089DCE3178735853CB /* Pods-Notes */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Notes"; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB627FFEBEE9E089DCE3178735853CB /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		707CFDF60BE48C3C6AF25E44A07D8124 /* Pods-NotesTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NotesTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		70A7DBEA0C5946A130F2DB0A98370071 /* Pods-Notes-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notes-acknowledgements.plist"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -52,15 +52,15 @@
 		8BC654D9DA1844BB8D6953C39D85E607 /* Pods-Notes-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Notes-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8F9124CEBD106BB71C7A46B54B935150 /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C062E0017B92F64FC19278B5E699000 /* Pods-Notes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notes-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A19176144EC5E64301F759E124929766 /* Pods-NotesUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NotesUITests-dummy.m"; sourceTree = "<group>"; };
 		A9CDB5CB6641AC8BF9C4D5B88F21E9D9 /* Pods-NotesUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NotesUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B1E437794AC86EBD54D16E63EF9357C4 /* Pods-NotesUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-NotesUITests"; path = Pods_NotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1E437794AC86EBD54D16E63EF9357C4 /* Pods_NotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4F5DA52FBFC6060E008430BDFA14D2A /* Pods-NotesTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NotesTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B81AC1B1E0532755B4427E5D4A49DAAE /* Pods-NotesUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NotesUITests-Info.plist"; sourceTree = "<group>"; };
 		C2CF7FE46AAD665DB71CEE05B89FEA23 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
 		CA4242D5339FCD501A51FB90AA35DF7A /* Pods-Notes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Notes.modulemap"; sourceTree = "<group>"; };
-		CB745485916DB42FFDE7CA4D707E33A6 /* Pods-NotesTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-NotesTests"; path = Pods_NotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB745485916DB42FFDE7CA4D707E33A6 /* Pods_NotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C4FF544DF351C60459CB4E06EF8FDD /* Pods-Notes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Notes-dummy.m"; sourceTree = "<group>"; };
 		DDD41C72254915946434245ACAB9FA33 /* Pods-NotesTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NotesTests-umbrella.h"; sourceTree = "<group>"; };
 		F33262F4FE47F0A696AF1AFA9DFEE5B6 /* Pods-NotesUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NotesUITests-umbrella.h"; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 		B53AE8248A0D1DE8BE464844193F72D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6AB627FFEBEE9E089DCE3178735853CB /* Pods-Notes */,
-				CB745485916DB42FFDE7CA4D707E33A6 /* Pods-NotesTests */,
-				B1E437794AC86EBD54D16E63EF9357C4 /* Pods-NotesUITests */,
+				6AB627FFEBEE9E089DCE3178735853CB /* Pods_Notes.framework */,
+				CB745485916DB42FFDE7CA4D707E33A6 /* Pods_NotesTests.framework */,
+				B1E437794AC86EBD54D16E63EF9357C4 /* Pods_NotesUITests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 			);
 			name = "Pods-Notes";
 			productName = Pods_Notes;
-			productReference = 6AB627FFEBEE9E089DCE3178735853CB /* Pods-Notes */;
+			productReference = 6AB627FFEBEE9E089DCE3178735853CB /* Pods_Notes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4D778B9A943168349EEB6790E4747A8F /* Pods-NotesUITests */ = {
@@ -253,7 +253,7 @@
 			);
 			name = "Pods-NotesUITests";
 			productName = Pods_NotesUITests;
-			productReference = B1E437794AC86EBD54D16E63EF9357C4 /* Pods-NotesUITests */;
+			productReference = B1E437794AC86EBD54D16E63EF9357C4 /* Pods_NotesUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E125B3AB7E415CB98394F4C59B311D39 /* Pods-NotesTests */ = {
@@ -272,7 +272,7 @@
 			);
 			name = "Pods-NotesTests";
 			productName = Pods_NotesTests;
-			productReference = CB745485916DB42FFDE7CA4D707E33A6 /* Pods-NotesTests */;
+			productReference = CB745485916DB42FFDE7CA4D707E33A6 /* Pods_NotesTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +282,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1320;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -376,7 +376,6 @@
 			baseConfigurationReference = 8F9124CEBD106BB71C7A46B54B935150 /* Pods-NotesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -388,7 +387,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-NotesUITests/Pods-NotesUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-NotesUITests/Pods-NotesUITests.modulemap";
@@ -411,7 +410,6 @@
 			baseConfigurationReference = C2CF7FE46AAD665DB71CEE05B89FEA23 /* Pods-Notes.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -423,7 +421,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Notes/Pods-Notes-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Notes/Pods-Notes.modulemap";
@@ -446,7 +444,6 @@
 			baseConfigurationReference = 6757BC58CBF08C883889D830ADD3DA1D /* Pods-Notes.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -458,7 +455,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Notes/Pods-Notes-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Notes/Pods-Notes.modulemap";
@@ -528,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -546,7 +543,6 @@
 			baseConfigurationReference = 2A641EAF41D47C9F2F6F4A158327097C /* Pods-NotesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -558,7 +554,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-NotesTests/Pods-NotesTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-NotesTests/Pods-NotesTests.modulemap";
@@ -580,7 +576,6 @@
 			baseConfigurationReference = 649A20290BCC16FD223800251DAB3D29 /* Pods-NotesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -592,7 +587,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-NotesUITests/Pods-NotesUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-NotesUITests/Pods-NotesUITests.modulemap";
@@ -659,13 +654,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -676,7 +670,6 @@
 			baseConfigurationReference = F7E7E2351C65B6A7CEC1109D1515C433 /* Pods-NotesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -688,7 +681,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-NotesTests/Pods-NotesTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-NotesTests/Pods-NotesTests.modulemap";
