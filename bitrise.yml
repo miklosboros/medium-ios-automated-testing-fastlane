@@ -14,6 +14,7 @@ pipelines:
     stages:
     - stage_ios_build: {}
     - stage_ios_parallel_tests: {}
+    - stage_retrieve_results: {}
 stages:
   stage_ios_build:
     workflows:
