@@ -108,10 +108,6 @@ workflows:
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            if [ -f "${BITRISE_SOURCE_DIR}" ]; then
-                echo "exists."
-            fi
-
             exec unzip -q "${BITRISE_ARTIFACT_PATHS}" 
 
             pwd
@@ -124,7 +120,8 @@ workflows:
         title: Test project
         inputs:
         - content: |
-            IgnoreFileSystemDeviceInodeChanges=1 xcodebuild test -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests | xcbeautify
+            IgnoreFileSystemDeviceInodeChanges=1 xcodebuild build-for-testing -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" | xcbeautify
+            # IgnoreFileSystemDeviceInodeChanges=1 xcodebuild test -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests | xcbeautify
     - deploy-to-bitrise-io@2: {}
   shams_intergration:
     steps:
