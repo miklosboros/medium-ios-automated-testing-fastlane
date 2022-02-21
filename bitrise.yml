@@ -23,6 +23,9 @@ stages:
     - run_unit: {}
     - run_intergration: {}
     - run_uitests: {}
+  stage_retrieve_results:
+    workflows:
+      - deploy: {}
 workflows:
   ios_build: 
     steps:
@@ -79,6 +82,16 @@ workflows:
         inputs:
         - content: |
             IgnoreFileSystemDeviceInodeChanges=1 xcodebuild -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_UnitTests -resultBundlePath "xcodebuild_unit.xcresult" -parallel-testing-enabled YES test-without-building | xcbeautify
+    - script@1.1:
+          title: Compress Result Bundle
+          is_always_run: true
+          inputs:
+            - content: |-
+                set -euxo pipefail
+                echo "-- compress --"
+                
+                cd "${BITRISE_DEPLOY_DIR}/"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_unit.zip" "/Users/vagrant/git/xcodebuild_unit.xcresult"
     - deploy-to-bitrise-io@2: {}
   run_intergration:
     steps:
@@ -106,6 +119,16 @@ workflows:
         inputs:
         - content: |
             xcodebuild -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests -resultBundlePath "xcodebuild_intergation.xcresult" -parallel-testing-enabled YES test-without-building | xcbeautify
+    - script@1.1:
+          title: Compress Result Bundle
+          is_always_run: true
+          inputs:
+            - content: |-
+                set -euxo pipefail
+                echo "-- compress --"
+                
+                cd "${BITRISE_DEPLOY_DIR}/"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_intergation.zip" "/Users/vagrant/git/xcodebuild_intergation.xcresult"
     - deploy-to-bitrise-io@2: {}
   run_uitests:
     steps:
@@ -127,13 +150,43 @@ workflows:
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
             
             echo "${BITRISE_ARTIFACT_PATHS}"
-            tar xPpf "${BITRISE_ARTIFACT_PATHS}" 
+            tar xPpf "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
         inputs:
         - content: |
             xcodebuild -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_UITests -resultBundlePath "xcodebuild_ui.xcresult" -parallel-testing-enabled YES test-without-building | xcbeautify
+    - script@1.1:
+          title: Compress Result Bundle
+          is_always_run: true
+          inputs:
+            - content: |-
+                set -euxo pipefail
+                echo "-- compress --"
+                
+                cd "${BITRISE_DEPLOY_DIR}/"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_ui.zip" "/Users/vagrant/git/xcodebuild_ui.xcresult"
     - deploy-to-bitrise-io@2: {}
+  deploy: 
+    steps:
+      - git::https://github.com/bitrise-steplib/bitrise-step-artifact-pull.git@main:
+          title: Pull artifacts
+          inputs:
+            - verbose: true
+            - artifact_sources: *
+      - script@1.1:
+          title: Deploy Artifacts
+          inputs:
+            - content: |
+                #!/usr/bin/env bash
+                set -euxo pipefail
+
+                unzip -q "${BITRISE_ARTIFACT_PATHS}"
+
+                trainer --path xcodebuild_ui.xcresult
+                trainer --path xcodebuild_intergation.xcresult
+                trainer --path xcodebuild_unit.xcresult
+      - deploy-to-bitrise-io@2: {}
 app:
   envs:
   - opts:
