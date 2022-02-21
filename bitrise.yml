@@ -189,15 +189,11 @@ workflows:
                     if [ "${file: -4}" = ".zip" ]; then
                       unzip -q $file -d "${BITRISE_SOURCE_DIR}"
                     fi
-                    
                 done
 
-                pwd
-                ls
-
-                trainer --path xcodebuild_ui.xcresult
-                trainer --path xcodebuild_intergation.xcresult
-                trainer --path xcodebuild_unit.xcresult
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_ui.xcresult"
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_intergation.xcresult"
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_unit.xcresult"
       - deploy-to-bitrise-io@2: {}
 app:
   envs:
