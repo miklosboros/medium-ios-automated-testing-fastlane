@@ -74,7 +74,7 @@ workflows:
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            xcodebuild build-for-testing -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" | xcbeautify
+            IgnoreFileSystemDeviceInodeChanges=1 xcodebuild build-for-testing -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" | xcbeautify
     - script@1.1:
         title: Compress Derived Data
         is_always_run: true
@@ -113,11 +113,18 @@ workflows:
             fi
 
             exec unzip -q "${BITRISE_ARTIFACT_PATHS}" 
+
+            pwd
+            echo "Current LS"
+            ls
+
+            echo "Current LS in DerivedData folder"
+            ls /DerivedData
     - script@1.1:
         title: Test project
         inputs:
         - content: |
-            xcodebuild test -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests | xcbeautify
+            IgnoreFileSystemDeviceInodeChanges=1 xcodebuild test -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests | xcbeautify
     - deploy-to-bitrise-io@2: {}
   shams_intergration:
     steps:
