@@ -72,7 +72,8 @@ workflows:
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            tar xPpf "${BITRISE_ARTIFACT_PATHS}" 
+            echo "${BITRISE_ARTIFACT_PATHS}"
+            tar xPpf "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
         inputs:
@@ -100,6 +101,7 @@ workflows:
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
 
+            echo "${BITRISE_ARTIFACT_PATHS}"
             tar xvPpf "${BITRISE_ARTIFACT_PATHS}" 
     - script@1.1:
         title: Test project
@@ -125,8 +127,8 @@ workflows:
 
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
-            echo "${BITRISE_SOURCE_DIR}/DerivedData"
-
+            
+            echo "${BITRISE_ARTIFACT_PATHS}"
             tar xPpf "${BITRISE_ARTIFACT_PATHS}" 
     - script@1.1:
         title: Test project
