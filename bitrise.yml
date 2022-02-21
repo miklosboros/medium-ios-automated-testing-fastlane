@@ -89,10 +89,11 @@ workflows:
             echo "-- compress --"
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            exec zip -qr "${BITRISE_SOURCE_DIR}/DerivedData.zip" "${BITRISE_SOURCE_DIR}/DerivedData"
+
+            exec tar cfPp "${BITRISE_SOURCE_DIR}/DerivedData.tar" --format posix "${BITRISE_SOURCE_DIR}/DerivedData"
     - deploy-to-bitrise-io@2:
         inputs:
-        - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
+        - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.tar"
     - cache-push: {}
   shams_unit:
     steps:
@@ -113,10 +114,8 @@ workflows:
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            unzip -q "${BITRISE_ARTIFACT_PATHS}" 
+            tar xvPpf "${BITRISE_ARTIFACT_PATHS}" 
 
-            pwd
-            
             echo "Current LS in DerivedData folder"
             ls DerivedData
     - script@1.1:
