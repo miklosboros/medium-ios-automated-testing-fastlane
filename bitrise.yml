@@ -187,9 +187,11 @@ workflows:
                 for file in $files
                 do
                     if [ "${file: -4}" = ".zip" ]; then
-                      unzip -q $file -d "${BITRISE_SOURCE_DIR}"
+                      unzip -q $file -d "${BITRISE_SOURCE_DIR}/"
                     fi
                 done
+
+                ls "${BITRISE_SOURCE_DIR}"
 
                 trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_ui.xcresult"
                 trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_intergation.xcresult"
