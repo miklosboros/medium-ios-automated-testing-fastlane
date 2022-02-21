@@ -84,7 +84,7 @@ workflows:
             echo "-- compress --"
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            exec zip -r "${BITRISE_SOURCE_DIR}/DerivedData.zip" "${BITRISE_SOURCE_DIR}/DerivedData"
+            exec zip -qr "${BITRISE_SOURCE_DIR}/DerivedData.zip" "${BITRISE_SOURCE_DIR}/DerivedData"
     - deploy-to-bitrise-io@2:
         inputs:
         - deploy_path: "${BITRISE_SOURCE_DIR}/DerivedData.zip"
@@ -107,15 +107,12 @@ workflows:
 
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
-            echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            pwd
-            ls ${BITRISE_SOURCE_DIR}/DerivedData
-            ls ${BITRISE_ARTIFACT_PATHS}
+            if [ -f "${BITRISE_SOURCE_DIR}" ]; then
+                echo "exists."
+            fi
 
-            exec unzip "${BITRISE_ARTIFACT_PATHS}/"
-            
-            
+            exec unzip -q "${BITRISE_ARTIFACT_PATHS}" 
     - script@1.1:
         title: Test project
         inputs:
@@ -140,7 +137,7 @@ workflows:
 
             echo "-- unzip -- "
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
-            exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            exec unzip -q "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
         inputs:
@@ -167,7 +164,7 @@ workflows:
             mkdir "${BITRISE_SOURCE_DIR}/DerivedData"
             echo "${BITRISE_SOURCE_DIR}/DerivedData"
 
-            exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            exec unzip -q "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test project
         inputs:
@@ -341,7 +338,7 @@ workflows:
             echo "$BITRISE_ARTIFACT_PATHS"
 
             echo "-- unzip -- "
-            exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            exec unzip -q "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test without Building
         inputs:
@@ -430,7 +427,7 @@ workflows:
             echo "$BITRISE_ARTIFACT_PATHS"
 
             echo "-- unzip -- "
-            exec unzip "${BITRISE_ARTIFACT_PATHS}"
+            exec unzip -q "${BITRISE_ARTIFACT_PATHS}"
     - script@1.1:
         title: Test without Building
         inputs:
