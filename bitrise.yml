@@ -62,7 +62,7 @@ workflows:
         title: Pull artifacts
         inputs:
         - verbose: true
-        - artifact_sources: shams_build.*
+        - artifact_sources: ios_build.*
     - script@1.1:
         title: Unzip
         inputs:
@@ -91,7 +91,7 @@ workflows:
         title: Pull artifacts
         inputs:
         - verbose: true
-        - artifact_sources: shams_build.*
+        - artifact_sources: ios_build.*
     - script@1.1:
         title: Unzip
         inputs:
@@ -118,7 +118,7 @@ workflows:
         title: Pull artifacts
         inputs:
         - verbose: true
-        - artifact_sources: shams_build.*
+        - artifact_sources: ios_build.*
     - script@1.1:
         title: Unzip
         inputs:
