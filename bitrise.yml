@@ -183,16 +183,18 @@ workflows:
                 #!/usr/bin/env bash
                 set -euxo pipefail
 
+                cd "${BITRISE_SOURCE_DIR}"
+
                 files=$(echo "$BITRISE_ARTIFACT_PATHS" | tr "|" "\n")
 
                 for file in $files
                 do
                     if [ "${file: -4}" = ".zip" ]; then
-                      unzip -q $file -d "${BITRISE_SOURCE_DIR}/"
+                      unzip -q $file
                     fi
                 done
 
-                ls "${BITRISE_SOURCE_DIR}"
+                ls "${BITRISE_SOURCE_DIR}/"
 
                 trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_ui.xcresult"
                 trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_intergation.xcresult"
