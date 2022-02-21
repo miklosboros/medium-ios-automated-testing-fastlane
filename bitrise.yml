@@ -77,6 +77,8 @@ workflows:
         title: Test project
         inputs:
         - content: |
+            ls "${BITRISE_SOURCE_DIR}/DerivedData"
+
             IgnoreFileSystemDeviceInodeChanges=1 xcodebuild -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -testPlan Notes_IntergrationTests -resultBundlePath "xcodebuild.xcresult" -parallel-testing-enabled YES test-without-building | xcbeautify
     - deploy-to-bitrise-io@2: {}
   run_intergration:
