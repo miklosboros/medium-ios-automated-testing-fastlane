@@ -194,11 +194,9 @@ workflows:
                     fi
                 done
 
-                ls "${BITRISE_SOURCE_DIR}/"
-
-                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_ui.xcresult"
-                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_intergation.xcresult"
-                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_unit.xcresult"
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_ui.xcresult" --output_directory "${BITRISE_DEPLOY_DIR}"
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_intergation.xcresult" --output_directory "${BITRISE_DEPLOY_DIR}"
+                trainer --path "${BITRISE_SOURCE_DIR}/xcodebuild_unit.xcresult" --output_directory "${BITRISE_DEPLOY_DIR}"
       - deploy-to-bitrise-io@2: {}
 app:
   envs:
