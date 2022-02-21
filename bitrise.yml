@@ -174,7 +174,7 @@ workflows:
           title: Pull artifacts
           inputs:
             - verbose: true
-            - artifact_sources: *
+            - artifact_sources: "*" 
       - script@1.1:
           title: Deploy Artifacts
           inputs:
