@@ -182,7 +182,11 @@ workflows:
                 #!/usr/bin/env bash
                 set -euxo pipefail
 
-                unzip -q "${BITRISE_ARTIFACT_PATHS}"
+                read -ra FILES <<< "$BITRISE_ARTIFACT_PATHS"
+                for f in ${FILES[@]}
+                do
+                    unzip -q "$f"
+                done
 
                 trainer --path xcodebuild_ui.xcresult
                 trainer --path xcodebuild_intergation.xcresult
