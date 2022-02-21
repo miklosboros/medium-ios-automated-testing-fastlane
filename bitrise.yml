@@ -182,11 +182,11 @@ workflows:
                 #!/usr/bin/env bash
                 set -euxo pipefail
 
-                IFS='|' read -ra FILES <<< "$BITRISE_ARTIFACT_PATHS"
+                files=$(echo "$BITRISE_ARTIFACT_PATHS" | tr "|" "\n")
+
+                for file in $files
                 do
-                    if [ "${f: -4}" = ".zip" ]; then
-                      unzip -q "$f"
-                    fi
+                    unzip -q $file -d "${BITRISE_SOURCE_DIR}"
                 done
 
                 pwd
