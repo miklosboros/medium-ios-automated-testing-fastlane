@@ -91,8 +91,9 @@ workflows:
                 set -euxo pipefail
                 echo "-- compress --"
                 
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_unit.zip" "/Users/vagrant/git/xcodebuild_unit.xcresult"
+                cd "${BITRISE_SOURCE_DIR}"
+                
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_unit.zip" "xcodebuild_unit.xcresult"
     - deploy-to-bitrise-io@2: {}
   run_intergrationTests:
     steps:
@@ -128,8 +129,8 @@ workflows:
                 set -euxo pipefail
                 echo "-- compress --"
                 
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_intergation.zip" "/Users/vagrant/git/xcodebuild_intergation.xcresult"
+                cd "${BITRISE_SOURCE_DIR}"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_intergation.zip" "xcodebuild_intergation.xcresult"
     - deploy-to-bitrise-io@2: {}
   run_uiTests:
     steps:
@@ -165,8 +166,8 @@ workflows:
                 set -euxo pipefail
                 echo "-- compress --"
                 
-                cd "${BITRISE_DEPLOY_DIR}/"
-                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_ui.zip" "/Users/vagrant/git/xcodebuild_ui.xcresult"
+                cd "${BITRISE_SOURCE_DIR}"
+                exec zip -qr "${BITRISE_DEPLOY_DIR}/xcodebuild_ui.zip" "xcodebuild_ui.xcresult"
     - deploy-to-bitrise-io@2: {}
   deploy: 
     steps:
