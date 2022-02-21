@@ -76,6 +76,9 @@ workflows:
             
             defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
+            apt install git-restore-mtime
+            python3 git-restore-mtime --force
+
             IgnoreFileSystemDeviceInodeChanges=1 xcodebuild build-for-testing -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -showBuildTimingSummary -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" | xcbeautify
     - script@1.1:
         title: Compress Derived Data
@@ -121,6 +124,9 @@ workflows:
         inputs:
         - content: |
             defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
+
+            apt install git-restore-mtime
+            python3 git-restore-mtime --force
 
             IgnoreFileSystemDeviceInodeChanges=1 xcodebuild test -workspace Notes.xcworkspace -scheme Notes -destination 'platform=iOS Simulator,OS=15.0,name=iPod touch (7th generation)' -derivedDataPath "${BITRISE_SOURCE_DIR}/DerivedData" -showBuildTimingSummary -testPlan Notes_IntergrationTests | xcbeautify
     - deploy-to-bitrise-io@2: {}
